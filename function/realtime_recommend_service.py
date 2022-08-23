@@ -59,7 +59,7 @@ class RealTimeRecommendService():
                                                                    recent_product_list)
             print('knn_response :', knn_response)
             self.__set_response_product_list('id', knn_response)
-
+        print('recommend_product_list finally : ', self.recommend_product_list)
         return self.recommend_product_list
 
     def __clear_data(self):
