@@ -24,7 +24,7 @@ class OpensearchService:
         #     max_retries=10,
         #     retry_on_timeout=True
         # )
-        print('OpenSearch client :', self.client)
+        # print('OpenSearch client :', self.client)
 
     def test_search(self, index_name, query):
         print(query)
