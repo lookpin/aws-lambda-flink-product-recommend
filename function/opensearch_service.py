@@ -20,7 +20,7 @@ class OpensearchService:
         self.auth = AWSV4SignerAuth(credentials, region)
         self.headers = CaseInsensitiveDict()
         self.headers["Connection"] = "keep-alive"
-        self.headers["Keep-Alive"] = "timeout=5, max=2"
+        self.headers["Keep-Alive"] = "timeout=5, max=50"
         self.headers["Content-Type"] = "application/json"
 
         # self.client = OpenSearch(
