@@ -196,6 +196,7 @@ class RealTimeRecommendService():
 
     def __set_response_product_list(self, key_str, response):
         print(response)
+        print("response['hits']: ", response['hits'])
         if response is not None:
             for res in response['hits']['hits']:
                 print('__set_response_product_list:', res)
