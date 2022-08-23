@@ -1,3 +1,6 @@
 # AWS
 boto3==1.17.36
+slack-sdk==3.13.0
 redis==4.1.1
+opensearch-py==2.0.0
+requests_aws4auth==1.1.2
