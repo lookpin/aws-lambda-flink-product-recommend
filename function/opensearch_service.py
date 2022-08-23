@@ -12,8 +12,7 @@ class OpensearchService:
         region = os.environ.get('AWS_REGION', 'test')
         self.host = os.environ.get('OPENSEARCH_ENDPOINT', 'test')
         credentials = boto3.Session().get_credentials()
-        self.user = os.environ.get('OPENSEARCH_AUTH_ID', 'test')
-        self.password = os.environ.get('OPENSEARCH_AUTH_PASSWORD', 'test')
+        self.auth = AWSV4SignerAuth(credentials, region)
         self.headers = {"Content-Type": "application/json"}
         # self.client = OpenSearch(
         #     hosts=[{'host': self.host, 'port': 443}],
@@ -44,7 +43,7 @@ class OpensearchService:
         url = 'https://' + self.host + ':443' + '/' + index_name + '/_search'
         print(url)
         # Make the signed HTTP request
-        r = requests.get(url, auth=(self.user, self.password), headers=self.headers, data=json.dumps(query))
+        r = requests.get(url, auth=self.auth, headers=self.headers, data=json.dumps(query))
         response = {
             "statusCode": 200,
             "headers": {
