@@ -1,9 +1,13 @@
+import json
+
 from opensearch_service import OpensearchService
 from realtime_recommend_service import RealTimeRecommendService
+
 realtime_service = RealTimeRecommendService()
 
 opensearch = OpensearchService()
 realtime_service.set_opensearch_service(opensearch)
+
 
 def lambda_handler(event, context):
     print(event)
@@ -11,9 +15,19 @@ def lambda_handler(event, context):
     userType = event['queryStringParameters'].get('userType', None)
     userId = event['queryStringParameters'].get('userId', None)
     result = realtime_service.get_recommend_realtime_with_item(userType, userId)
-    return result
 
-
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        'body': json.dumps({
+            'success': True,
+            'recommend_list': result
+        }),
+        "isBase64Encoded": False
+    }
 
 #
 #
