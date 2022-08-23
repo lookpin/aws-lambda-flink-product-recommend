@@ -8,9 +8,8 @@ realtime_service.set_opensearch_service(opensearch)
 def lambda_handler(event, context):
     print(event)
     result = None
-    userType = event['params']['querystring'].get('userType', None)
-    userId = event['params']['querystring'].get('userId', None)
-
+    userType = event['queryStringParameters'].get('userType', None)
+    userId = event['queryStringParameters'].get('userId', None)
     result = realtime_service.get_recommend_realtime_with_item(userType, userId)
     return result
 
