@@ -204,6 +204,7 @@ class RealTimeRecommendService():
                 print('id : {0}'.format(id))
                 if self.duplicate_check_dict.get(id) is None:
                     self.recommend_product_list.append(self.__get_recommend_product_model_info(id, res))
+                print('self.recommend_product_list : ', self.recommend_product_list)
 
     def __get_recommend_product_model_info(self, id, response):
         self.duplicate_check_dict[id] = id
