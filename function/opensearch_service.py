@@ -54,7 +54,9 @@ class OpensearchService:
 
         # Add the search results to the response
         response['body'] = r.text
-        return json.loads(response.get('body'))
+        json_string = json.loads(response.get('body'))
+        print(json_string)
+        return json_string
 
     def ping(self):
         return self.client.ping()
