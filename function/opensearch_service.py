@@ -4,6 +4,11 @@ import boto3
 import requests
 
 from opensearchpy import OpenSearch, RequestsHttpConnection, AWSV4SignerAuth
+from requests.structures import CaseInsensitiveDict
+
+# headers = CaseInsensitiveDict()
+# headers["Connection"] = "keep-alive"
+# headers["Keep-Alive"] = "timeout=5, max=2"
 
 
 class OpensearchService:
@@ -13,7 +18,11 @@ class OpensearchService:
         self.host = os.environ.get('OPENSEARCH_ENDPOINT', 'test')
         credentials = boto3.Session().get_credentials()
         self.auth = AWSV4SignerAuth(credentials, region)
-        self.headers = {"Content-Type": "application/json"}
+        self.headers = CaseInsensitiveDict()
+        self.headers["Connection"] = "keep-alive"
+        self.headers["Keep-Alive"] = "timeout=5, max=2"
+        self.headers["Content-Type"] = "application/json"
+
         # self.client = OpenSearch(
         #     hosts=[{'host': self.host, 'port': 443}],
         #     http_auth=self.auth,
