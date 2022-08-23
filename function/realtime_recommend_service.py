@@ -198,6 +198,7 @@ class RealTimeRecommendService():
         print(response)
         if response is not None:
             for res in response['hits']['hits']:
+                print('__set_response_product_list:', res)
                 id = res['_source'][key_str]
                 if self.duplicate_check_dict.get(id) is None:
                     self.recommend_product_list.append(self.__get_recommend_product_model_info(id, res))
