@@ -44,7 +44,7 @@ class OpensearchService:
         except Exception as e:
             print(e)
             print('ElasticSearch client connection issue')
-            self.client.close()
+            # self.client.close()
             raise e
         return response
 
