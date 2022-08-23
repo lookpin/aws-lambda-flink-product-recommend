@@ -51,14 +51,14 @@ def query_kmeans_feature_models(vector_feature_list, unique_key_list, product_li
                 "must_not": [
                     {
                         "terms": {
-                            "id": product_list
+                            "product_id": product_list
                         }
                     }
                 ]
             }
         },
         "_source": {
-            "includes": ["id", "division2", "model_factor", "model_version", "model_timestamp"]
+            "includes": ["id", "product_id", "division2", "model_factor", "model_version", "model_timestamp"]
         }
     }
 
