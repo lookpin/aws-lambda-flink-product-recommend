@@ -150,10 +150,13 @@ class RealTimeRecommendService():
         return response
 
     def __get_recent_view_product_list(self, user_id, user_type):
+
+        print('recent_view_product')
         key = self.__get_recent_view_product_action_key(user_type, user_id)
         recent_view_product = self.recent_view_product_cache. \
             zrevrange_between_timestamp(key, self.__get_previous_timestamp(RECENT_PRODUCT_CACHE_PREVIOUS_DAY), self.__get_current_timestamp())
 
+        print(recent_view_product)
         search_list = []
         for view_product in recent_view_product:
             search_list.append(int(view_product[0]))
