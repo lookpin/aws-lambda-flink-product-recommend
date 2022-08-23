@@ -195,6 +195,7 @@ class RealTimeRecommendService():
                                                   query_knn_feature_model(vector_feature_list, exclude_product_list))
 
     def __set_response_product_list(self, key_str, response):
+        print(response)
         if response is not None:
             for res in response['hits']['hits']:
                 id = res['_source'][key_str]
