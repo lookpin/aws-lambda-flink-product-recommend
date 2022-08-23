@@ -2,7 +2,6 @@ import datetime
 import os
 import time
 
-from base_recommend_serivce import BaseRecommendService
 from redis_service import RedisService
 from opensearch_service import OpensearchService
 from opensearch_query import query_filter_product_id, query_kmeans_feature_model, query_knn_feature_model, \
@@ -19,7 +18,7 @@ RECENT_PRODUCT_CACHE_PREVIOUS_DAY = int(os.environ.get('RECENT_PRODUCT_CACHE_PRE
 KST = datetime.timezone(datetime.timedelta(hours=9))
 
 
-class RealTimeRecommendService(BaseRecommendService):
+class RealTimeRecommendService():
 
     def __init__(self):
         super().__init__()
