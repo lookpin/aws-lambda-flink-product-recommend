@@ -14,19 +14,19 @@ class OpensearchService:
         credentials = boto3.Session().get_credentials()
         self.auth = AWSV4SignerAuth(credentials, region)
         self.headers = {"Content-Type": "application/json"}
-        self.client = OpenSearch(
-            hosts=[{'host': self.host, 'port': 443}],
-            http_auth=self.auth,
-            use_ssl=True,
-            verify_certs=True,
-            connection_class=RequestsHttpConnection,
-            timeout=30,
-            max_retries=10,
-            retry_on_timeout=True
-        )
+        # self.client = OpenSearch(
+        #     hosts=[{'host': self.host, 'port': 443}],
+        #     http_auth=self.auth,
+        #     use_ssl=True,
+        #     verify_certs=True,
+        #     connection_class=RequestsHttpConnection,
+        #     timeout=30,
+        #     max_retries=10,
+        #     retry_on_timeout=True
+        # )
         print('OpenSearch client :', self.client)
 
-    def search(self, index_name, query):
+    def test_search(self, index_name, query):
         print(query)
         print(index_name)
         response = None
@@ -39,7 +39,7 @@ class OpensearchService:
             raise e
         return response
 
-    def test_search(self, index_name, query):
+    def search(self, index_name, query):
         url = 'https://' + self.host + ':443' + '/' + index_name + '/_search'
         print(url)
         # Make the signed HTTP request
