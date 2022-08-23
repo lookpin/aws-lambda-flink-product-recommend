@@ -32,16 +32,6 @@ cd package
 
 zip -r ../${TARGET_LAMBDA_FUNCTION_CODE} .
 
-cd ../
-
-pwd
-ls
-cd function
-zip -u ../${TARGET_LAMBDA_FUNCTION_CODE} psycopg2/*.py
-zip -u ../${TARGET_LAMBDA_FUNCTION_CODE} psycopg2/*.so
-
-mv *.py ../
-cd ..
 zip -g ${TARGET_LAMBDA_FUNCTION_CODE} *.py
 
 aws s3 cp ${TARGET_LAMBDA_FUNCTION_CODE} s3://${S3_BUCKET}/${BRANCH}/${TARGET_LAMBDA_FUNCTION_CODE}
