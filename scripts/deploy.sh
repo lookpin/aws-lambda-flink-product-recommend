@@ -32,6 +32,15 @@ cd package
 
 zip -r ../${TARGET_LAMBDA_FUNCTION_CODE} .
 
+cd ../
+
+pwd
+ls
+cd function
+
+mv *.py ../
+cd ..
+
 zip -g ${TARGET_LAMBDA_FUNCTION_CODE} *.py
 
 aws s3 cp ${TARGET_LAMBDA_FUNCTION_CODE} s3://${S3_BUCKET}/${BRANCH}/${TARGET_LAMBDA_FUNCTION_CODE}
