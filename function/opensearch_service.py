@@ -22,6 +22,7 @@ class OpensearchService:
         self.headers["Connection"] = "keep-alive"
         self.headers["Keep-Alive"] = "timeout=3, max=3"
         self.headers["Content-Type"] = "application/json"
+        self.session = requests.session()
 
         # self.client = OpenSearch(
         #     hosts=[{'host': self.host, 'port': 443}],
