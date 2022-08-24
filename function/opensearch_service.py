@@ -34,6 +34,7 @@ class OpensearchService:
             retry_on_timeout=True
         )
         print('OpenSearch client :', self.client)
+        self.client.ping()
 
     def search(self, index_name, query):
         print(query)
