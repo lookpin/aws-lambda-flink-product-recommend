@@ -30,6 +30,7 @@ def db_connection():
         max_retries=10,
         retry_on_timeout=True
     )
+    print('opensearch init')
     print('opensearch init():', opensearch.ping())
     # realtime_service = RealTimeRecommendService()
     # opensearch = OpensearchService()
