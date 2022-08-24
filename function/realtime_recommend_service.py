@@ -26,6 +26,8 @@ class RealTimeRecommendService():
         self.index_cache = RedisService('flink-agg-prod.xa2joo.ng.0001.apn2.cache.amazonaws.com', 6379)
         self.recent_user_action_cache = RedisService(RECENT_ACTION_ENDPOINT, RECENT_ACTION_ENDPOINT_PORT)
         self.recent_view_product_cache = RedisService(RECENT_PRODUCT_CACHE_ENDPOINT, RECENT_PRODUCT_CACHE_PORT)
+        print('ping ():', self.recent_user_action_cache.ping())
+        print('ping ():', self.recent_view_product_cache.ping())
         self.duplicate_check_dict = {}
         self.recommend_product_list = []
         self.opensearch_service = None
