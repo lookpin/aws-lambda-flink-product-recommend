@@ -26,8 +26,8 @@ def db_connection():
         use_ssl=True,
         verify_certs=True,
         connection_class=RequestsHttpConnection,
-        timeout=30,
-        max_retries=10,
+        timeout=3,
+        max_retries=1,
         retry_on_timeout=True
     )
     print('opensearch init')
