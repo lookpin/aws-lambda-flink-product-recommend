@@ -19,8 +19,8 @@ class OpensearchService:
         credentials = boto3.Session().get_credentials()
         self.auth = AWSV4SignerAuth(credentials, region)
         self.headers = CaseInsensitiveDict()
-        self.headers["Connection"] = "keep-alive"
-        self.headers["Keep-Alive"] = "timeout=3, max=50"
+        # self.headers["Connection"] = "keep-alive"
+        # self.headers["Keep-Alive"] = "timeout=3, max=50"
         self.headers["Content-Type"] = "application/json"
         # self.session = requests.session()
 
