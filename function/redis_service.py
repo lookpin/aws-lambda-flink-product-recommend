@@ -21,8 +21,7 @@ class RedisService:
             return json.loads(json_string)
 
     def get(self, key):
-        return '2022-08-16'
-        # return self.redis.get(key)
+        return self.redis.get(key)
 
     def zrevrange(self, key, size):
         return self.redis.zrevrange(key, 0, size, withscores=True)
