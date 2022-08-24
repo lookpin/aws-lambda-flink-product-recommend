@@ -3,11 +3,15 @@ import json
 from opensearch_service import OpensearchService
 from realtime_recommend_service import RealTimeRecommendService
 
-realtime_service = RealTimeRecommendService()
+realtime_service = None
+opensearch = None
 
-opensearch = OpensearchService()
-realtime_service.set_opensearch_service(opensearch)
+def init():
+    realtime_service = RealTimeRecommendService()
+    opensearch = OpensearchService()
+    realtime_service.set_opensearch_service(opensearch)
 
+init()
 
 def lambda_handler(event, context):
     print(event)
