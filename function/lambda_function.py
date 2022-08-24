@@ -6,12 +6,12 @@ from realtime_recommend_service import RealTimeRecommendService
 realtime_service = None
 opensearch = None
 
-def init():
+def db_connection():
     realtime_service = RealTimeRecommendService()
     opensearch = OpensearchService()
     realtime_service.set_opensearch_service(opensearch)
 
-init()
+db_connection()
 
 def lambda_handler(event, context):
     print(event)
