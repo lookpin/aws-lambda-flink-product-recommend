@@ -29,8 +29,8 @@ class OpensearchService:
             use_ssl=True,
             verify_certs=True,
             connection_class=RequestsHttpConnection,
-            timeout=30,
-            max_retries=10,
+            timeout=3,
+            max_retries=2,
             retry_on_timeout=True
         )
         print('OpenSearch client :', self.client)
