@@ -20,7 +20,6 @@ class ElasticsearchService():
 
     def set_client(self):
         cloud_id = os.environ.get('CLOUD_ID', 'test')
-        print('set_client')
         self.client = Elasticsearch(
             cloud_id=cloud_id,
             api_key=('oS6VtYIBdEw0LK8Ji-PA', 'mtOaHjqQRp6Wg3CtrJQKBg'),
