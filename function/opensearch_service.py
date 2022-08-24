@@ -19,8 +19,8 @@ class OpensearchService:
         credentials = boto3.Session().get_credentials()
         self.auth = AWSV4SignerAuth(credentials, region)
         self.headers = CaseInsensitiveDict()
-        self.headers["Connection"] = "keep-alive"
-        self.headers["Keep-Alive"] = "timeout=5, max=50"
+        # self.headers["Connection"] = "keep-alive"
+        # self.headers["Keep-Alive"] = "timeout=5, max=4"
         self.headers["Content-Type"] = "application/json"
 
         # self.client = OpenSearch(
@@ -63,9 +63,9 @@ class OpensearchService:
 
         # Add the search results to the response
         response['body'] = r.text
-        json_string = json.loads(response.get('body'))
-        print(json_string)
-        return json_string
+        json_dict = json.loads(response.get('body'))
+        print(json_dict)
+        return json_dict
 
     def ping(self):
         return self.client.ping()
